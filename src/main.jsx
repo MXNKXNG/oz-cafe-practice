@@ -3,14 +3,17 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { CartProvider } from "./context/cartContext.jsx";
 import { MenuProvider } from "./context/menuContext.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <MenuProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </MenuProvider>
+    <ThemeProvider>
+      <MenuProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </MenuProvider>
+    </ThemeProvider>
   </BrowserRouter>
 );
