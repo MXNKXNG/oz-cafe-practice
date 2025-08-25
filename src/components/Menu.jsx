@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useMenu } from "../context/menuContext";
 import Item from "./Item";
 import OrderModal from "./OrderModal";
 
-function Menu({ menu, cart, setCart }) {
+function Menu() {
+  const { menu } = useMenu();
   const [modalOn, setModalOn] = useState(false);
   const [modalMenu, setModalMenu] = useState(null);
+
   if (!menu)
     return (
       <div style={{ textAlign: "center", margin: "80px" }}>
@@ -35,12 +38,7 @@ function Menu({ menu, cart, setCart }) {
         );
       })}
       {modalOn ? (
-        <OrderModal
-          modalMenu={modalMenu}
-          setModalOn={setModalOn}
-          cart={cart}
-          setCart={setCart}
-        />
+        <OrderModal modalMenu={modalMenu} setModalOn={setModalOn} />
       ) : null}
     </>
   );
